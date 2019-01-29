@@ -174,3 +174,30 @@ getUsers() {
 ```
 
 Save everything and make sure both servers were running. Navigate to `http://localhost:3000` to access the Front-End. Click the `View Site Users` and voila!! 💥 the Rails api response is showing in the React application.
+
+## Step: 4
+Let's make starting the app easier using single command.
+
+Make sure you have `foreman` installed on your system. If not install it via apt repo
+```
+sudo apt install ruby-foreman
+```
+
+In `Gemfile` add `gem foreman` right above `group :development, :test do`.
+
+Run `bundle install`.
+
+Create `Procfile` in the root directory and add the following code:
+```
+web: sh -c 'cd client && PORT=3000 npm start'
+api: rails server -p 3001
+```
+
+To start the application next time just run
+```
+foreman start
+```
+
+**Thank You**
+
+_Adapted from [this](https://medium.com/@nick.hartunian/rails-5-api-create-react-app-full-stack-heaven-2b2160b5ce6b)_
