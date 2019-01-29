@@ -23,7 +23,8 @@ npm start
 Hopefully you see the spinning symbol of React awesomeness.
 
 Next, shutdown the server and open `App.js` file located inside client's `src` folder, and replace it's content with the code below:
-```
+
+```javascript
 import React, { Component } from 'react';
 import './App.css';
 
