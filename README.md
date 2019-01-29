@@ -1,24 +1,15 @@
-# README
+# Rails v5 API and CRA
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A definite guide on using rails api with react application created using `create-react-app`. I will assume that you have `rails` and `create-react-app` installed.
 
-Things you may want to cover:
+## Step: 1
+Create a new rails project
+```
+rails new myapp --api
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Navigate into `myapp` and install react app in it
+```
+cd myapp/
+create-react-app client
+```
