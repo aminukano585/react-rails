@@ -129,3 +129,48 @@ npm start
 Now, Back-End api is here `http://localhost:3001/api/users`
 
 And, Front-End is here `http://localhost:3000/`
+
+## Step: 3
+Let's use `fetch` to consume the api, but first let's solve some potential issues with `cors`. We will use `rack-cors` gem to workaround that issue.
+
+Open `Gemfile` file in the root directory, and find the line below:
+
+```ruby
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+# gem 'rack-cors'
+```
+
+Make sure you uncomment the second line, to enable `rack-cors`.
+
+Open `application.rb` file located inside `config` folder.
+
+Locate a module similar to this one in it:
+```ruby
+module ReactRails
+  class Application < Rails::Application
+```
+
+In the module add the code below, just below `config.api_only = true` line:
+```ruby
+config.middleware.insert_before 0, Rack::Cors do
+  allow do
+      origins '*'
+      resource '*', :headers => :any, :methods => [:get, :post, :options]
+    end
+end
+```
+
+In the `client` folder, open the `App.js` file located inside `src` folder, and edit the `getUsers` method to look like the one below:
+```javascript
+getUsers() {
+  fetch('http://localhost:3001/api/users')
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        siteUsers: JSON.stringify(data)
+      });
+    })
+}
+```
+
+Save everything and make sure both servers were running. Navigate to `http://localhost:3000` to access the Front-End. Click the `View Site Users` and voila!! 💥 the Rails api response is showing in the React application.
