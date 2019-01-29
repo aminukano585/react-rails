@@ -13,9 +13,13 @@ export default class App extends Component {
   }
 
   getUsers() {
-    this.setState({
-      siteUsers: 'No one is here yet'
-    });
+    fetch('http://localhost:3001/api/users')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          siteUsers: JSON.stringify(data)
+        });
+      })
   }
 
   render() {
