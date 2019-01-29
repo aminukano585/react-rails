@@ -23,41 +23,40 @@ npm start
 Hopefully you see the spinning symbol of React awesomeness.
 
 Next, shutdown the server and open `App.js` file located inside client's `src` folder, and replace it's content with the code below:
-```
-import React, { Component } from 'react';
-import './App.css';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+    import React, { Component } from 'react';
+    import './App.css';
 
-    this.state = {
-      siteUsers: ''
-    };
+    export default class App extends Component {
+      constructor(props) {
+        super(props);
 
-    this.getUsers = this.getUsers.bind(this);
-  }
+        this.state = {
+          siteUsers: ''
+        };
 
-  getUsers() {
-    this.setState({
-      siteUsers: 'No one is here yet'
-    });
-  }
+        this.getUsers = this.getUsers.bind(this);
+      }
 
-  render() {
-    return (
-      <div className="App">
-        <button 
-          onClick={this.getUsers}
-          style={{ marginTop: '45vh' }}
-        >
-          View Site Users
-        </button>
-        <p>{this.state.siteUsers}</p>
-      </div>
-    );
-  }
-}
-```
+      getUsers() {
+        this.setState({
+          siteUsers: 'No one is here yet'
+        });
+      }
+
+      render() {
+        return (
+          <div className="App">
+            <button 
+              onClick={this.getUsers}
+              style={{ marginTop: '45vh' }}
+            >
+              View Site Users
+            </button>
+            <p>{this.state.siteUsers}</p>
+          </div>
+        );
+      }
+    }
 
 Test the front-end again, make sure nothing breaks
